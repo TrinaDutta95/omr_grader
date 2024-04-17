@@ -8,7 +8,7 @@ This project provides an automated solution to grade scantron sheets using image
 - **Image Processing**: Utilizes OpenCV to handle image manipulations and contour detection.
 - **Adaptive Thresholding**: Helps in accurate bubble detection under varying lighting conditions in scan images.
 - **Contour Analysis**: Identifies filled bubbles and compares them to an answer key.
-- **Result Visualization**: Marks correct answers in green and incorrect ones in red on the scanned image.
+- **Result Visualization**: Marks correct answers
 
 ## Prerequisites
 
