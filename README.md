@@ -51,4 +51,11 @@ python main.py
         if w >= 8 and h >= 8 and circularity >= 0.7 and ar <= 1.1:
   ```
   These values will vary depending on the scanned file and the size of the bubbles. So you may need to adjust them for your custom page.
+
+## Output
+The script will process the image, evaluate the answers, and save a new image showing the results with correct answers. Additionally, it will print the score and a detailed report on the terminal. An example output:
+```bash
+Image with detected bubbles saved as quiz3/page_10_bubbles.png
+(10, [1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1])
+```
   
