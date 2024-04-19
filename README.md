@@ -14,7 +14,7 @@ This project provides an automated solution to grade scantron sheets using image
 Before you can run this project, you'll need to install the following packages using pip:
 
 - Python 3.6 or higher
-- opencv-python==3.4.17.63
+- opencv-python==4.9.0.80
 - numpy==1.24.4
 - imutils==0.5.4
 - pillow==10.3.0
