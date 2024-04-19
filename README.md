@@ -1,5 +1,4 @@
-This is a project I did as a TA for a Graduate course. The professor wanted me to write a python program which will automatically grade a scantron page filled by students.
-# Scantron Grading System
+ # Scantron Grading System
 
 This project provides an automated solution to grade scantron sheets using image processing techniques with Python and OpenCV. The system processes scanned images of filled-in scantron forms to determine which bubbles have been marked and evaluates the answers based on a provided answer key.
 
@@ -12,14 +11,17 @@ This project provides an automated solution to grade scantron sheets using image
 
 ## Prerequisites
 
-Before you can run this project, you'll need to install the following:
+Before you can run this project, you'll need to install the following packages using pip:
 
 - Python 3.6 or higher
-- OpenCV-Python
-- NumPy
-- Imutils
+- opencv-python==3.4.17.63
+- numpy==1.24.4
+- imutils==0.5.4
+- pillow==10.3.0
+- PyMuPDF==1.24.1
+- PyMuPDFb==1.24.1
 
-You can install these packages using pip:
+Or you can also install these packages using pip:
 
 ```bash
 pip install requirements.txt
@@ -32,8 +34,8 @@ pip install requirements.txt
 
 ## Usage
 To use this scantron grading system, you will need to provide:
--A path to the scanned pdf file of the filled scantron in the main.py.
--An answer key in the form of a dictionary where the key is the question number (starting from 0) and the value is the index of the correct answer (starting from 0) in the main.py
+- A path to the scanned pdf file of the filled scantron in the main.py.
+- An answer key in the form of a dictionary where the key is the question number (starting from 0) and the value is the index of the correct answer (starting from 0) in the main.py
 ```bash
 python main.py
 ```
@@ -55,7 +57,6 @@ python main.py
 ## Output
 The script will process the image, evaluate the answers, and save a new image showing the results with correct answers. Additionally, it will print the score and a detailed report on the terminal. An example output:
 ```bash
-Image with detected bubbles saved as quiz3/page_10_bubbles.png
 (10, [1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1])
 ```
   
