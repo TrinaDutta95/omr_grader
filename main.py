@@ -46,23 +46,23 @@ def process_scantron(image_path):
     img_cv_cropped = np.array(cropped_image)
 
     # Save the cropped image (optional, for checking the crop)
-    cv2.imwrite(image_path.replace('.png', '_cropped.png'), img_cv_cropped)
+    #cv2.imwrite(image_path.replace('.png', '_cropped.png'), img_cv_cropped)
 
     # Preprocess the cropped image
     image = img_cv_cropped
     thresh = cv2.adaptiveThreshold(image, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C,
                                    cv2.THRESH_BINARY_INV, 19, 5)
 
-    cv2.imwrite(image_path.replace('.png', '_thresh.png'), thresh)
+    #cv2.imwrite(image_path.replace('.png', '_thresh.png'), thresh)
     # Morphological operations to clean up the image
     kernel = np.ones((7, 7), np.uint8)
     opening = cv2.morphologyEx(thresh, cv2.MORPH_OPEN, kernel)
     closing = cv2.morphologyEx(opening, cv2.MORPH_CLOSE, kernel)
     edged = cv2.Canny(thresh, 60, 200)
-    cv2.imwrite(image_path.replace('.png', '_edged.png'), edged)
+    #cv2.imwrite(image_path.replace('.png', '_edged.png'), edged)
 
     # Find contours
-    _, cnts, hierarchy = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    cnts, hierarchy = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
     questionCnts = []
     # Analyze each contour
@@ -82,9 +82,9 @@ def process_scantron(image_path):
     output_img = cv2.cvtColor(img_cv_cropped, cv2.COLOR_GRAY2BGR)  # Convert to BGR for colored drawing
     for cnt in questionCnts:
         cv2.drawContours(output_img, [cnt], -1, (0, 255, 0), 2)  # Draw contours in green
-    save_path = image_path.replace('.png', '_bubbles.png')  # Modify path for saving
-    cv2.imwrite(save_path, output_img)
-    print(f"Image with detected bubbles saved as {save_path}")
+    #save_path = image_path.replace('.png', '_bubbles.png')  # Modify path for saving
+    #cv2.imwrite(save_path, output_img)
+    #print(f"Image with detected bubbles saved as {save_path}")
 
     # sort the question contours top-to-bottom, then initialize
     # the total number of correct answers
@@ -132,7 +132,7 @@ def process_scantron(image_path):
 
         # draw the outline of the correct answer on the test
         cv2.drawContours(img_cv_cropped, [cnts[k]], -1, color, 3)
-        cv2.imwrite(image_path.replace('.png', '_correct.png'), img_cv_cropped)
+        #cv2.imwrite(image_path.replace('.png', '_correct.png'), img_cv_cropped)
     # grab the test taker
     score = correct
     return score, score_board
