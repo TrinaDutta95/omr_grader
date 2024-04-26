@@ -127,5 +127,5 @@ def parse_names(image_path):
     # Save the image with marked bubbles
     # cv2.imwrite('marked_scantron.png', color_img)
 
-    print("Detected names:", results)
+    #print("Detected names:", results)
     return results
