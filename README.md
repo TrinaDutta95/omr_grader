@@ -54,6 +54,12 @@ python main.py
   ```
   These values will vary depending on the scanned file and the size of the bubbles. So you may need to adjust them for your custom page.
 
+## To print the names of test taker (If the custom scantron has bubbles to fill out the names)
+- Make sure to update the crop section of the code similar as above (make sure the crop area is properly aligned)
+- Rotate the cropped image if needed
+- Update bubble dimensions to filter out the bubbles
+- The code written for English aplphabets only.
+
 ## Output
 The script will process the image, evaluate the answers, and save a new image showing the results with correct answers. Additionally, it will print the score and a detailed report on the terminal. An example output:
 ```bash
