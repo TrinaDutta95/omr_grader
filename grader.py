@@ -13,11 +13,11 @@ def process_scantron(image_path):
         return
 
     # answers
-    answer_key = {0:1,1:3,2:0,3:1,4:0,5:3,6:1,7:1,8:2,9:1,10:3,11:1,12:0,13:2,14:3} # replace with answer keys for different quizzes
+    answer_key = {0: 3, 1: 1, 2: 3, 3: 2, 4: 1, 5: 2, 6: 0, 7: 1, 8: 2, 9: 2}  # replace with answer keys for different quizzes
     # Convert OpenCV image to a PIL image for cropping
     img_pil = Image.fromarray(img_cv)
     # Define the box to crop (left, upper, right, lower)
-    box = (30, 300, 120, 655)  # Adjust these values based on your observation
+    box = (30, 300, 120, 550)  # Adjust these values based on your observation
     cropped_image = img_pil.crop(box)
     # Convert the cropped PIL image back to an OpenCV image
     img_cv_cropped = np.array(cropped_image)
@@ -48,7 +48,7 @@ def process_scantron(image_path):
         circularity = (4 * np.pi * area) / (perimeter ** 2) if perimeter > 0 else 0
         # print("w:",w,"h:",h,"circularity:",circularity,"ar:",ar)
         # Print the geometric properties
-        if w >= 8 and h >= 8 and circularity >= 0.6 and ar <= 1.1:
+        if w >= 8 and h >= 8:
             questionCnts.append(c)
 
     output_img = cv2.cvtColor(img_cv_cropped, cv2.COLOR_GRAY2BGR)  # Convert to BGR for colored drawing
@@ -103,8 +103,8 @@ def process_scantron(image_path):
             score_board.append(0)
 
         # draw the outline of the correct answer on the test
-        #cv2.drawContours(img_cv_cropped, [cnts[k]], -1, color, 3)
-        #cv2.imwrite(image_path.replace('.png', '_correct.png'), img_cv_cropped)
+        cv2.drawContours(img_cv_cropped, [cnts[k]], -1, color, 3)
+        cv2.imwrite(image_path.replace('.png', '_correct.png'), img_cv_cropped)
     # grab the test taker
     score = correct
     return score, score_board

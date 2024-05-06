@@ -25,9 +25,9 @@ def convert_pdf_to_images(pdf_path, output_folder):
 
 if __name__ == '__main__':
     # processing the pdf file to individual images into a folder
-    convert_pdf_to_images('quiz3.pdf', 'quiz3')  # change file and folder accordingly
+    convert_pdf_to_images('quiz5.pdf', 'quiz5')  # change file and folder accordingly
     # take each image from processed folder and run it for grading
-    folder_dir = "quiz3/"  # change directory accordingly
+    folder_dir = "quiz5/"  # change directory accordingly
     for images in os.listdir(folder_dir):
         print(images)
         # if student has not filled bubble or incorrectly filled bubble e.g.-crossing or tick, it will not register
